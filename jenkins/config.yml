@@ -1,0 +1,27 @@
+jenkins:
+  systemMessage: "Welcome to the Chocolatine-Powered Marvin Jenkins Instance."
+
+  remotingSecurity:
+    enabled: true
+
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+      - id: Admin
+        password: "Admin123"
+        name: Administrateur
+
+  authorizationStrategy:
+    roleBased:
+      roles:
+        global:
+          - name: "admin"
+            description: "Marvin master"
+            permissions:
+              - "Overall/Administer"
+            assignments:
+              - "Admin"
+
+jobs:
+  - file: ./job_dsl.groovy
